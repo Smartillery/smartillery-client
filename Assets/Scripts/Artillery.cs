@@ -5,7 +5,9 @@ public class Artillery : MonoBehaviour {
 
 	public float bearing;
 	public float elevation;
+	public float velocity;
 
+	public Projectile ProjectilePrefab;
 	public GameObject Turret;
 	public GameObject Barrel;
 	public GameObject MuzzleFlashPrefab;
@@ -60,5 +62,15 @@ public class Artillery : MonoBehaviour {
 		Instantiate (MuzzleFlashPrefab, EndOfBarrel.transform.position, Quaternion.identity);
 		AudioSource.PlayClipAtPoint (ArtillerySound, transform.position);
 		Handheld.Vibrate();
+
+		LaunchProjectile();
+	}
+
+	private void LaunchProjectile()
+	{		
+		Projectile projectile = Instantiate(ProjectilePrefab, EndOfBarrel.transform.position, EndOfBarrel.transform.rotation) as Projectile;
+		projectile.Angle = elevation;
+		projectile.Bearing = bearing;
+		projectile.Velocity = velocity;
 	}
 }
