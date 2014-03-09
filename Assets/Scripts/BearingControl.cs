@@ -14,7 +14,7 @@ public class BearingControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float dif = RotationHelper.GetSignedRotation(_lastRotation, transform.rotation, Vector3.forward);
+		float dif = RotationHelper.GetSignedRotation(_lastRotation, transform.rotation, false);
 
 		Target.bearing += dif * scalar;
 		_lastRotation = transform.rotation;

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Artillery : MonoBehaviour {
 
-	public double bearing;
-	public double elevation;
+	public float bearing;
+	public float elevation;
 
 	public GameObject Turret;
 	public GameObject Barrel;
@@ -12,14 +12,18 @@ public class Artillery : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		bearing = 0;
-		elevation = 45;
+		elevation = 0;
 	}
 
 	// Update is called once per frame
 	void Update () {
 	
-		Barrel.transform.localRotation = Quaternion.AngleAxis((float)elevation, Vector3.left);
-		Turret.transform.localRotation = Quaternion.AngleAxis((float)bearing, Vector3.up);
+		if(bearing / 360 > 0)
+			bearing %= 360;
+		elevation = Mathf.Clamp(elevation, 0, 89);
+
+		Barrel.transform.localRotation = Quaternion.AngleAxis(elevation, Vector3.left);
+		Turret.transform.localRotation = Quaternion.AngleAxis(bearing, Vector3.up);
 
 	}
 }
