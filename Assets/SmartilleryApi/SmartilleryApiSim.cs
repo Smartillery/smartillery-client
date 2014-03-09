@@ -33,9 +33,12 @@ public class SmartilleryApiSim : MonoBehaviour, ISmartilleryApi {
 	void Start () {
 		
 		_enemies = new List<Player>();
-		for(int i = 0; i < EnemyLocations.Length; i++)
+		if(EnemyLocations != null)
 		{
-			_enemies.Add(new Player(){CurrentLocation = EnemyLocations[i], Destination = EnemyLocations[i], Velocity = PlayerVelocity});
+			for(int i = 0; i < EnemyLocations.Length; i++)
+			{
+				_enemies.Add(new Player(){CurrentLocation = EnemyLocations[i], Destination = EnemyLocations[i], Velocity = PlayerVelocity});
+			}
 		}
 	}
 	
