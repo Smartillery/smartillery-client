@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Net;
+using System;
 
 using SimpleJSON;
 
@@ -10,7 +11,7 @@ public class SimpleJsonTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		try{
 		WebClient client = new WebClient();
 		var data = client.DownloadString("http://ip.jsontest.com");
 
@@ -23,6 +24,10 @@ public class SimpleJsonTest : MonoBehaviour {
 		else
 		{
 			Debug.Log(node["ip"]);
+			}
+		}
+		catch(Exception ex){
+			mesh.text = ex.Message;
 		}
 	}
 	
