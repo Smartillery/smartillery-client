@@ -58,6 +58,6 @@ public class Artillery : MonoBehaviour {
 		Turret.transform.Translate(Vector3.back * (RecoilAmount * 0.25f));
 		Instantiate (MuzzleFlashPrefab, EndOfBarrel.transform.position, Quaternion.identity);
 		AudioSource.PlayClipAtPoint (ArtillerySound, this.transform.position);
-
+		Handheld.Vibrate();
 	}
 }
