@@ -32,9 +32,16 @@ public class Artillery : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
-		if(bearing / 360 > 0)
-			bearing %= 360;
+
+		if(Mathf.Abs(bearing) / 360f > 0)
+			bearing %= 360f;
+
+
+		if(bearing < 0f)
+		{
+			bearing = 360f + bearing;
+		}
+
 		elevation = Mathf.Clamp(elevation, 0, 89);
 
 		Barrel.transform.localRotation = Quaternion.AngleAxis(elevation, Vector3.left);

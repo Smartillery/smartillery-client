@@ -5,6 +5,7 @@ public class ElevationControl : MonoBehaviour {
 
 	public float scalar;
 	public Artillery Target;
+	public TextMesh Label;
 	private Quaternion _lastRotation;
 
 	// Use this for initialization
@@ -18,5 +19,12 @@ public class ElevationControl : MonoBehaviour {
 
 		Target.elevation += -dif * scalar;
 		_lastRotation = transform.rotation;
+	}
+	void LateUpdate()
+	{
+		if(Label != null)
+		{
+			Label.text = Target.elevation.ToString();
+		}
 	}
 }
