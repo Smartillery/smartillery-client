@@ -1,18 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Artillery.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LoginUI.cs">
     <Files>
-      <File FileName="Assets/Externals/SimpleJson.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SimpleJsonTest.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleMaps/GoogleMaps.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Artillery.cs" Line="60" Column="67" />
-      <File FileName="Assets/Scripts/BearingControl.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ElevationControl.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RotationHelper.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TouchController.cs" Line="48" Column="52" />
-      <File FileName="Assets/Scripts/Touchable.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TouchRotator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TouchButton.cs" Line="22" Column="20" />
+      <File FileName="Assets/SmartilleryApi/SmartilleryApiSim.cs" Line="35" Column="33" />
+      <File FileName="Assets/Scripts/LoginUI.cs" Line="47" Column="48" />
+      <File FileName="Assets/Scripts/ActionThread.cs" Line="48" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
