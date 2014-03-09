@@ -45,6 +45,11 @@ public class ActionThread
 		}
 	}
 
+	public void Join()
+	{
+		_thread.Join();
+	}
+
 	public void Wait()
 	{
 		if(!Complete)

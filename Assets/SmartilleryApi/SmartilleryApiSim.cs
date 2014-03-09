@@ -31,7 +31,8 @@ public class SmartilleryApiSim : MonoBehaviour, ISmartilleryApi {
 
 	// Use this for initialization
 	void Start () {
-		
+		DontDestroyOnLoad(this);
+
 		_enemies = new List<Player>();
 		if(EnemyLocations != null)
 		{
