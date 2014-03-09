@@ -14,12 +14,14 @@ public class Artillery : MonoBehaviour {
 
 	private bool _firing;
 	private Vector3 BarrelLocalPosition;
+	private Vector3 TurretLocalPosition;
 	// Use this for initialization
 	void Start () {
 		bearing = 0;
 		elevation = 0;
 		_firing = false;
 		BarrelLocalPosition = Barrel.transform.localPosition;
+		TurretLocalPosition = Turret.transform.localPosition;
 	}
 
 	// Update is called once per frame
@@ -39,6 +41,7 @@ public class Artillery : MonoBehaviour {
 				_firing = false;
 			}
 			Barrel.transform.localPosition = Vector3.MoveTowards(Barrel.transform.localPosition, BarrelLocalPosition, RecoilSpeed * Time.deltaTime);
+			Turret.transform.localPosition = Vector3.MoveTowards(Turret.transform.localPosition, TurretLocalPosition, RecoilSpeed * Time.deltaTime);
 		}
 	}
 
@@ -49,5 +52,6 @@ public class Artillery : MonoBehaviour {
 
 		_firing = true;
 		Barrel.transform.Translate(Vector3.back * RecoilAmount);
+		Turret.transform.Translate(Vector3.back * (RecoilAmount * 0.25f));
 	}
 }
