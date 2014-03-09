@@ -8,6 +8,8 @@ public class Artillery : MonoBehaviour {
 
 	public GameObject Turret;
 	public GameObject Barrel;
+	public GameObject MuzzleFlashPrefab;
+	public GameObject EndOfBarrel;
 
 	public float RecoilSpeed;
 	public float RecoilAmount;
@@ -53,5 +55,6 @@ public class Artillery : MonoBehaviour {
 		_firing = true;
 		Barrel.transform.Translate(Vector3.back * RecoilAmount);
 		Turret.transform.Translate(Vector3.back * (RecoilAmount * 0.25f));
+		Instantiate (MuzzleFlashPrefab, EndOfBarrel.transform.position, Quaternion.identity);
 	}
 }
