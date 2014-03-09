@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Linq;
 using SmartilleryUnityWrapper;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(SmartilleryApiSim))]
 public class GameManager : MonoBehaviour {
@@ -12,8 +15,12 @@ public class GameManager : MonoBehaviour {
 	private LocationInfo _lastLoc;
 	private ActionQueue _actions;
 
+	private ICollection<Launch> _launches;
+
+	
 	// Use this for initialization
 	void Start () {
+		_launches = new List<Launch>();
 		_actions = new ActionQueue();
 		var apis = GameObject.FindObjectsOfType<SmartilleryApiSim>();
 		if(apis.Length > 1)
@@ -62,7 +69,7 @@ public class GameManager : MonoBehaviour {
 
 	}
 	
-	void FireProjectile(Projectile projectile)
+	public void FireProjectile(Projectile projectile)
 	{
 		_actions.AddAction(() => api.Launch(projectile.Angle, projectile.Bearing), true);
 	}
@@ -79,11 +86,25 @@ public class GameManager : MonoBehaviour {
 
 	void UpdateProjectiles()
 	{
-//		var players = api.GetCurrentPlayer();
+		Debug.Log ("Updating projectiles");
+		if(_launches.Count == 0)
+		{
+			_launches = _launches.Concat(api.GetLaunches()).ToList();
+		}
+		else
+		{
+			DateTime since = _launches.Max(x => x.TimeFired);
+			_launches = _launches.Concat(api.GetLaunches (since)).ToList();
+		}
+
+		foreach(Launch launch in _launches)
+		{
+			Debug.Log (launch);
+		}
+
 	}
 
 	void UpdatePlayers()
 	{
-//		var players = api.GetCurrentPlayer();
 	}
 }

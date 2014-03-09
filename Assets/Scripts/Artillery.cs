@@ -14,6 +14,7 @@ public class Artillery : MonoBehaviour {
 	public GameObject EndOfBarrel;
 	public AudioClip ArtillerySound;
 	public Camera ArtilleryCamera;
+	public GameManager SmartilleryGame;
 
 	public float RecoilSpeed;
 	public float RecoilAmount;
@@ -79,5 +80,6 @@ public class Artillery : MonoBehaviour {
 		projectile.Angle = elevation;
 		projectile.Bearing = bearing;
 		projectile.Velocity = velocity;
+		SmartilleryGame.FireProjectile(projectile);
 	}
 }

@@ -18,9 +18,13 @@ public class SmartilleryApiSim : MonoBehaviour, ISmartilleryApi {
 	public int LoginTimeMs;
 	public int LagTimeMs;
 
+	public double StartPlayerLat;
+	public double StartPlayerLong;
+
 	public Vector2 LandLocationOffset;
 
 	public Location[] EnemyLocations;
+
 
 	private Location lastPlayerLocation; 
 	private DateTime lastPlayerLocationTime;
@@ -29,9 +33,13 @@ public class SmartilleryApiSim : MonoBehaviour, ISmartilleryApi {
 	private List<Player> _enemies;
 	private List<Launch> _launches;
 
+	private static int _id = 0;
+
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
+
+		playerCurrentLocation = new Location(){Latitude = StartPlayerLat, Longitude = StartPlayerLong};
 
 		_enemies = new List<Player>();
 		if(EnemyLocations != null)
@@ -41,6 +49,8 @@ public class SmartilleryApiSim : MonoBehaviour, ISmartilleryApi {
 				_enemies.Add(new Player(){CurrentLocation = EnemyLocations[i], Destination = EnemyLocations[i], Velocity = PlayerVelocity});
 			}
 		}
+
+		_launches = new List<Launch>();
 	}
 	
 	// Update is called once per frame
@@ -76,9 +86,8 @@ public class SmartilleryApiSim : MonoBehaviour, ISmartilleryApi {
 	{
 		AssertServerConnected();
 
-		UpdatePlayerLocation();
-
 		Launch launch = new Launch(){
+			Id = _id++,
 			Angle = angle,
 			Bearing = bearing,
 			TimeFired = DateTime.Now,
