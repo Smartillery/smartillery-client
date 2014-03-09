@@ -10,6 +10,7 @@ public class Artillery : MonoBehaviour {
 	public GameObject Barrel;
 	public GameObject MuzzleFlashPrefab;
 	public GameObject EndOfBarrel;
+	public AudioClip ArtillerySound;
 
 	public float RecoilSpeed;
 	public float RecoilAmount;
@@ -56,5 +57,7 @@ public class Artillery : MonoBehaviour {
 		Barrel.transform.Translate(Vector3.back * RecoilAmount);
 		Turret.transform.Translate(Vector3.back * (RecoilAmount * 0.25f));
 		Instantiate (MuzzleFlashPrefab, EndOfBarrel.transform.position, Quaternion.identity);
+		AudioSource.PlayClipAtPoint (ArtillerySound, this.transform.position);
+
 	}
 }
