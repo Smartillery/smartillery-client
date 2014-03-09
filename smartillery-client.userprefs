@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SmartilleryApi/SmartilleryApiSim.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Detonator/TestScene/DetonatorTest.js">
     <Files>
-      <File FileName="Assets/SmartilleryApi/SmartilleryApiSim.cs" Line="30" Column="1" />
-      <File FileName="Assets/Scripts/LoginUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Projectile.cs" Line="39" Column="1" />
+      <File FileName="Assets/Scripts/Artillery.cs" Line="1" Column="1" />
+      <File FileName="Assets/SmartilleryApi/SmartilleryApiSim.cs" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Detonator/TestScene/DetonatorTest.js" Line="107" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

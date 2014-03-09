@@ -8,6 +8,10 @@ public class Projectile : MonoBehaviour {
 	public float Bearing;
 	public float Velocity;
 
+	public GameObject ShellModel;
+	public GameObject CraterModel;
+	public GameObject Explosion;
+
 	public float Gravity;
 
 	// Use this for initialization
@@ -28,6 +32,14 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
+		ShellModel.SetActive(false);
+		CraterModel.SetActive(true);
+		Explosion.SetActive(true);
+		Vector3 pos = this.transform.position;
+		pos.y = 0;
+		this.transform.position = pos;
+		this.transform.rotation = Quaternion.identity;
+		this.transform.Rotate(Vector3.up * Random.Range(0f, 360f));
 		Destroy (this);
 	}
 
