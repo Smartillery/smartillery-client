@@ -1,6 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Touchable.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../RestSharp/RestSharp/Deserializers/XmlDeserializer.cs">
     <Files>
       <File FileName="../RestSharp/RestSharp/Deserializers/XmlDeserializer.cs" Line="1" Column="1" />
       <File FileName="Assets/Externals/SimpleJson.cs" Line="1" Column="1" />
@@ -10,8 +10,9 @@
       <File FileName="Assets/Scripts/BearingControl.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ElevationControl.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/RotationHelper.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TouchController.cs" Line="40" Column="33" />
-      <File FileName="Assets/Scripts/Touchable.cs" Line="12" Column="2" />
+      <File FileName="Assets/Scripts/TouchController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Touchable.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TouchRotator.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

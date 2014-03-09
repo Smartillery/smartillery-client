@@ -45,10 +45,11 @@ public class TouchController : MonoBehaviour {
 			_touchDown = true;
 		}
 
-		//if we are touching, go update things
+		//if we are touching, go update the active object
 		if(_touchDown)
 		{
-			_activeObject.Touching(touches[0].position);
+			if(_activeObject != null)
+				_activeObject.Touching(touches[0].position);
 		}
 	}
 }
