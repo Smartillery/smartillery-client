@@ -79,11 +79,11 @@ public class GameManager : MonoBehaviour {
 
 	void UpdateProjectiles()
 	{
-
+//		var players = api.GetCurrentPlayer();
 	}
 
 	void UpdatePlayers()
 	{
-
+//		var players = api.GetCurrentPlayer();
 	}
 }

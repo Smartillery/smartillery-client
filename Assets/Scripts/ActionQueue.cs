@@ -9,7 +9,7 @@ public class ActionQueue {
 	private List<Action> _actionQueue;
 
 	private ActionThread _managerThread;
-	private ActionThread _actionThread;
+	private Exception _currentException;
 	private bool _error;
 	private AutoResetEvent _added;
 	private static object _actionQueueLock = new object();
@@ -28,7 +28,7 @@ public class ActionQueue {
 				Action action = null;
 				lock(_actionQueueLock)
 				{
-					if(_actionThread != null && _actionThread.Exception != null)
+					if(HasException)
 					{
 						DebugMessage ("ActionQueue: Waiting for Exception to be cleared");
 						_added.WaitOne();
@@ -83,29 +83,33 @@ public class ActionQueue {
 	{
 		get
 		{
-			return _actionThread != null && _actionThread.Exception != null;
+			return _currentException != null;
 		}
 	}
 
 	public void GetException()
 	{
 		if(HasException)
-			throw _actionThread.Exception;
+			throw _currentException;
 	}
 
 	public void ClearException()
 	{
-		_actionThread.Exception = null;
+		_currentException = null;
 		_added.Set();
 	}
 
 	private void BuildAction(Action action)
 	{
 		DebugMessage("ActionQueue: Running Action");
-		_actionThread = new ActionThread(() => {
+		try
+		{
 			action();
-		});
-		_actionThread.Join();
+		}
+		catch(Exception ex)
+		{
+			_currentException = ex;
+		}
 		DebugMessage("ActionQueue: Action Complete");
 
 	}
