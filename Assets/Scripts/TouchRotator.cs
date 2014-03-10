@@ -22,6 +22,10 @@ public class TouchRotator : Touchable {
 
 	#region implemented abstract members of Touchable
 
+	public override void DoubleTouch (Vector2 touch1, Vector2 touch2)
+	{
+	}
+
 	public override void BeginTouch (Vector2 position)
 	{
 		_lastPosition = position;

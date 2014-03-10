@@ -10,4 +10,5 @@ public abstract class Touchable : MonoBehaviour {
 
 	public abstract void EndTouch();
 
+	public abstract void DoubleTouch(Vector2 touch1, Vector2 touch2);
 }

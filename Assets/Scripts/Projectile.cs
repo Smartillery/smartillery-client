@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour {
 	void Update () {
 
 		this.transform.Translate(Vector3.forward * Velocity * Time.deltaTime);
-		Gravity += 9.81f * Time.deltaTime;
+		Gravity += 0.1f * 9.81f * Time.deltaTime;
 		this.transform.Translate(Vector3.down * Gravity * Time.deltaTime, Space.World);
 	}
 

@@ -28,21 +28,25 @@ public class TouchController : MonoBehaviour {
 		//if we haven't touched and there is one touch, find touchable object under finger
 		if(touches.Length == 1 && _touchDown == false)
 		{
-			Debug.Log("touched!");
-
-			Ray screenRay = camera.ScreenPointToRay(touches[0].position);
-			RaycastHit hitInfo;
-			if(Physics.Raycast(screenRay, out hitInfo, camera.farClipPlane))
+			Touchable obj = GetTouchableObject(touches[0]);
+			if(obj != null)
 			{
-				Touchable obj = hitInfo.collider.gameObject.GetComponent<Touchable>();
-				if(obj != null)
-				{
-					_activeObject = obj;
-					obj.BeginTouch(touches[0].position);
-				}
+				_activeObject = obj;
+				obj.BeginTouch(touches[0].position);
 			}
 
 			_touchDown = true;
+		}
+
+		if(touches.Length == 2)
+		{
+			Touchable obj = GetTouchableObject(touches[0]);
+
+			Touchable obj1 = GetTouchableObject(touches[1]);
+
+			if(obj != null && obj == obj1)
+				obj.DoubleTouch(touches[0].position, touches[1].position);
+
 		}
 
 		//if we are touching, go update the active object
@@ -51,5 +55,16 @@ public class TouchController : MonoBehaviour {
 			if(_activeObject != null)
 				_activeObject.Touching(touches[0].position);
 		}
+	}
+
+	private Touchable GetTouchableObject(Touch touch)
+	{
+		Ray screenRay = camera.ScreenPointToRay(touch.position);
+		RaycastHit hitInfo;
+		if(Physics.Raycast(screenRay, out hitInfo, camera.farClipPlane))
+		{
+			return hitInfo.collider.gameObject.GetComponent<Touchable>();
+		}
+		return null;
 	}
 }

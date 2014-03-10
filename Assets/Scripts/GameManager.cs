@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
 	public SmartilleryApiSim api;
 	public float UpdateInterval;
+	public GoogleMap Map;
 
 	public float _timeSinceUpdate;
 	private LocationInfo _lastLoc;
@@ -38,6 +39,10 @@ public class GameManager : MonoBehaviour {
 		if(Input.location.status != LocationServiceStatus.Running)
 		{
 			Input.location.Start();
+			LocationInfo locInfo = Input.location.lastData;
+			
+			Map.centerLocation = new GoogleMapLocation(){latitude = locInfo.latitude, longitude = locInfo.longitude};
+
 		}
 	}
 	
